@@ -1,0 +1,56 @@
+### Login Request
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@insurebroker.com",
+  "password": "admin123"
+}
+
+### Create a New Client
+POST http://localhost:8080/api/clients
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBpbnN1cmVicm9rZXIuY29tIiwicm9sZSI6IkFETUlOSVNUUkFUT1IiLCJicm9rZXJJZCI6MSwiaWF0IjoxNzcxMjYyMjc0LCJleHAiOjE3NzEzNDg2NzR9.p6QaaelhCnBIQ8YP9I7l_2pOH5C3gUyTyeNVDM93wVQ
+
+{
+  "firstName": "Ion",
+  "lastName": "Popescu",
+  "cnp": "1900101010011",
+  "email": "ion.popescu2@example.com",
+  "phone": "+40722123456",
+  "address": "Str. Victoriei 123, Bucuresti"
+}
+
+### Create a New Offer (Premium Calculator Test)
+POST http://localhost:8080/api/offers
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBpbnN1cmVicm9rZXIuY29tIiwicm9sZSI6IkFETUlOSVNUUkFUT1IiLCJicm9rZXJJZCI6MSwiaWF0IjoxNzcxMjYyMjc0LCJleHAiOjE3NzEzNDg2NzR9.p6QaaelhCnBIQ8YP9I7l_2pOH5C3gUyTyeNVDM93wVQ
+
+{
+  "clientId": 1,
+  "productId": 1,
+  "customFields": {
+    "1": "22"
+  }
+}
+
+### Convert Offer to Policy
+POST http://localhost:8080/api/policies
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBpbnN1cmVicm9rZXIuY29tIiwicm9sZSI6IkFETUlOSVNUUkFUT1IiLCJicm9rZXJJZCI6MSwiaWF0IjoxNzcxMjYyMjc0LCJleHAiOjE3NzEzNDg2NzR9.p6QaaelhCnBIQ8YP9I7l_2pOH5C3gUyTyeNVDM93wVQ
+
+{
+  "offerId": 1,
+  "startDate": "2026-02-16",
+  "endDate": "2027-02-16"
+}
+
+
+### Cancel the Policy
+POST http://localhost:8080/api/policies/1/cancel
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBpbnN1cmVicm9rZXIuY29tIiwicm9sZSI6IkFETUlOSVNUUkFUT1IiLCJicm9rZXJJZCI6MSwiaWF0IjoxNzcxMjYyMjc0LCJleHAiOjE3NzEzNDg2NzR9.p6QaaelhCnBIQ8YP9I7l_2pOH5C3gUyTyeNVDM93wVQ
+
+{
+  "cancellationReason": "Client found a cheaper alternative and requested immediate cancellation."
+}
